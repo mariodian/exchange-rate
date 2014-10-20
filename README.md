@@ -9,25 +9,25 @@ It has no external dependencies other than jQuery.
 
 Include css inside a head element:
 
-  <link rel="stylesheet" href="jquery.exchange-rate.min.css">
+    <link rel="stylesheet" href="jquery.exchange-rate.min.css">
 Include javascript inside a head element:
 
-  <script src="jquery.exchange-rate.min.js"></script>
+    <script src="jquery.exchange-rate.min.js"></script>
 
 Load the plugin:
 
-  <script>
-  $(document).ready(function(){
-  	$('.rate').exchangeRate({
-  		margin: 8,
-  		insertBefore: '<div class="rate-icons"></div>'
-  	});
-  });
-  </script>
+    <script>
+    $(document).ready(function(){
+      $('.rate').exchangeRate({
+        margin: 8,
+        insertBefore: '<div class="rate-icons"></div>'
+      });
+    });
+    </script>
   
 Add little bit of html where tags would be inserted:
 
-  <a href="#" class="rate" data-from="BTC" data-to="EUR">150 BTC</a>
+    <a href="#" class="rate" data-from="BTC" data-to="EUR">150 BTC</a>
   
 ##Parameters##
 
