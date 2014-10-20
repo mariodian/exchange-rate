@@ -1,0 +1,80 @@
+@color-blue: #25aae1;
+@rate-image-blue: "http://static.tumblr.com/wotpn6w/dfRn782oo/currencies.png";
+
+.rotate(@deg: 45deg){
+	-webkit-transform: rotate(@deg);
+	-moz-transform:    rotate(@deg);
+	-ms-transform:     rotate(@deg);
+	-o-transform:      rotate(@deg);
+}
+
+.clearfix {
+	&:before, &:after {
+	    content: " "; /* 1 */
+	    display: table; /* 2 */
+	}
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+
+.rate-bubble-wrapper {
+	z-index: 100;
+	position: absolute;
+	min-height: 32px;
+	min-width: 160px;
+	font: 24px/28px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	
+	.rate-icons {
+		float: left;
+		width: 44px;
+		height: 44px;
+		background: @color-blue url(@rate-image-blue) no-repeat;
+	}
+}
+.rate-bubble, .rate-bubble-arrow-cover, .rate-bubble-arrow {
+	background: #fff;
+}
+.rate-bubble, .rate-bubble-arrow {
+	border: 1px solid @color-blue;
+}
+.rate-bubble {
+	width: auto;
+	
+	p {
+		line-height: 28px;
+		padding: 8px 16px;
+		margin: 0;
+		float: left;
+		text-align: center;
+	}
+}
+.rate-bubble-arrow-cover {
+	position: relative;
+	z-index: 1000;
+	width: 30px;
+	height: 20px;
+	margin: auto;
+	margin-top: -21px;
+}
+.rate-bubble-arrow {
+	width: 10px;
+	height: 10px;
+	.rotate(45deg);
+	margin: auto;
+	margin-top: -7px;
+	
+	&:after {
+		position: absolute;
+		content: ' ';
+		background: #fff;
+		width: 31px;
+		height: 9px;
+		.rotate(-45deg);
+		top: 0;
+		left: -16px;
+	}
+}
