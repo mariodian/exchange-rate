@@ -5,8 +5,8 @@ $.fn.exchangeRate = function(options){
 	var settings = $.extend({
 		updateInterval: 3600, // every hour
 		margin: 10,
-		insertBefore: '',
-		insertAfter: ''
+		wrapBefore: '',
+		wrapAfter: ''
 	}, options);
 
 	Number.prototype.formatMoney = function(c, d, t){
@@ -29,7 +29,7 @@ $.fn.exchangeRate = function(options){
 	}
 
 	$.fn.displayRateInfo = function(rate){
-		var fromAmount = parseFloat($(this).text().replace(/[^\d]+/, '')),
+		var fromAmount = parseFloat($(this).text()),
 			toAmount = (fromAmount * rate).formatMoney(2, ',', ' '),
 			currency = $(this).data('to');
 		
@@ -46,7 +46,7 @@ $.fn.exchangeRate = function(options){
 			currencyTo = $(this).data('to').toUpperCase(),
 			rate = parseFloat($(this).data('rate'));
 		
-		$(this).after('<div class="rate-bubble-wrapper"><div class="rate-bubble clearfix">' + settings.insertBefore + '<p>fetching...</p>' + settings.insertAfter + '</div><div class="rate-bubble-arrow"></div></div>');
+		$(this).after('<div class="rate-bubble-wrapper"><div class="rate-bubble clearfix">' + settings.wrapBefore + '<p>fetching...</p>' + settings.wrapAfter + '</div><div class="rate-bubble-arrow"></div></div>');
 		
 		$('.rate-bubble-wrapper').positionBubble(self);
 			
@@ -61,7 +61,7 @@ $.fn.exchangeRate = function(options){
 		
 				$.ajax({
 					type: 'GET',
-					url: "http://query.yahooapis.com/v1/public/yql?q=select+rate,name+from+csv+where+url='http://download.finance.yahoo.com/d/quotes?s=" + currencyFrom + currencyTo + "%253DX%26f%3Dl1n'+and+columns='rate,name'&format=json&callback=",
+					url: "http://query.yahooapis.com/v1/public/yql?q=select+rate,name+from+csv+where+url='http://download.finance.yahoo.com/d/quotes?s=" + currencyFrom + currencyTo + "%253DX%26f%3Dl1n'+and+columns='rate,name'&format=json",
 					dataType: 'json',
 					
 					success: function(json){
